@@ -18,7 +18,7 @@ const renderList = () => {
   for (const i of dataArr) {
     refs.countryList.insertAdjacentHTML(
       'beforeend',
-      `<li style="display: flex; align-items: center; height: 34px"><img src="${i.flags.svg}" width="40" height="25"><p style="padding-left: 10px; font-size: 20px; ">${i.name.official}</p></li>`
+      `<li style="display: flex; align-items: center; height: 34px"><img src="${i.flags.svg}" width="40" height="25"><h3 style="padding-left: 10px; font-size: 20px; ">${i.name.official}</h3></li>`
     );
   }
 };
@@ -32,9 +32,15 @@ const renderInfo = () => {
     }" width="40" height="25"><h2 style="margin: 0; padding-left: 10px; font-size: 30px; ">${
       dataArr[0].name.official
     }</h2></div>
-    <p>Capital: ${dataArr[0].capital[0]}</p><p>Population: ${
+    <div >
+    <div style="display: flex; align-items: center; margin: 0; padding-left: 10px"><h3 style="margin: 0;">Capital: </h3><p style="margin: 0; padding-left: 10px">${
+      dataArr[0].capital[0]
+    }</p></div><div style="display: flex; align-items: center; margin: 0; padding-left: 10px"><h3 style="margin: 0;">Population: </h3><p style="margin: 0; padding-left: 10px">${
       dataArr[0].population
-    }</p><p>Languages: ${languagesList.join(', ')}</p>`
+    }</p></div><div style="display: flex; align-items: center; margin: 0; padding-left: 10px"><h3 style="margin: 0;">Languages: </h3><p  style="margin: 0;" padding-left: 10px">${languagesList.join(
+      ', '
+    )}</p></div>
+    </div>`
   );
 };
 
@@ -46,7 +52,6 @@ const handleSearch = event => {
     fetchCountries(inputValue)
       .then(data => {
         dataArr = data;
-        console.log('data', data);
         if (data.length > 10) {
           Notiflix.Notify.info(
             'Too many matches found. Please enter a more specific name.'

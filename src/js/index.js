@@ -1,4 +1,4 @@
-import './css/styles.css';
+import '../css/styles.css';
 import './fetchCountries';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
@@ -14,7 +14,6 @@ const refs = {
 
 const DEBOUNCE_DELAY = 300;
 let dataArr = [];
-// let hidenLoading = 'none';
 
 const renderList = () => {
   for (const i of dataArr) {
@@ -49,7 +48,7 @@ const renderInfo = () => {
 
 refs.loading.insertAdjacentHTML(
   'beforeend',
-  `<p class="load" Style="padding: 30px" >Loading...</p>`
+  `<h3 class="load" Style="padding: 30px" >Loading...</h3>`
 );
 let loadingChange = document.querySelector('.load');
 loadingChange.style.display = 'none';
